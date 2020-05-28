@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Busca CEP</title>
+	<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+		<div style="margin-top: 10rem" class="col">
+			<div class="jumbotron">
+				{%if erro%}
+				<div class="alert alert-danger" role="alert">
+  					{{erro}}
+				</div>
+				{%endif%}
+				{%if res%}
+				<div class="alert alert-success" role="alert">
+  					Seu CEP foi encontrado
+				</div>
+				{%endif%}
+				<form method="post">
+					<div class="form-group">
+						<input name="cep" type="text" class="form-control" id="cep" aria-describedby="emailHelp" placeholder="CEP">
+						<small id="cep" class="form-text text-muted">Digite seu CEP</small>
+					</div>
+					<button type="submit" class="btn btn-primary mx-auto">Pesquisar</button>
+				</form>
+			</div>
+			{%if res%}
+				<p>CEP: {{res.cep}}</p>
+				<p>Logradouro: {{res.logradouro}}</p>
+				<p>Bairro: {{res.bairro}}</p>
+				<p>Cidade: {{res.localidade}}</p>
+				<p>Estado: {{res.uf}}</p>
+			{%endif%}
+		</div>
+	</div>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+</body>
+</html>
